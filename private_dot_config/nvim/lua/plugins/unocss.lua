@@ -3,7 +3,7 @@ return {
 	opts = {
 		servers = {
 			unocss = {
-				filetypes = { "astro" },
+				filetypes = { "html", "javascriptreact", "rescript", "typescriptreact", "vue", "svelte", "astro" },
 			},
 		},
 	},
