@@ -6,7 +6,6 @@ return {
 				enabled = true,
 				auto_trigger = true,
 			},
-			copilot_node_command = "bun",
 		},
 	},
 	{
