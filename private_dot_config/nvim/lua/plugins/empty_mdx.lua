@@ -1,5 +1,5 @@
 return {
 	"davidmh/mdx.nvim",
-	ft = "*.mdx",
+	ft = "mdx",
 	dependencies = { "nvim-treesitter" },
 }
