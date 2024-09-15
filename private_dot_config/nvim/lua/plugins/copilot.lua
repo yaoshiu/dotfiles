@@ -1,6 +1,7 @@
 return {
 	{
 		"copilot.lua",
+		optional = true,
 		event = "InsertEnter",
 		opts = {
 			suggestion = {
