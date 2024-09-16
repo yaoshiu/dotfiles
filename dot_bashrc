@@ -15,6 +15,4 @@ if [[ $- != *i* ]]; then
 fi
 
 # Put your fun stuff here.
-ZELLIJ_AUTO_EXIT=true
-eval "$(zellij setup --generate-auto-start bash)"
 [ -x /bin/fish ] && SHELL=/bin/fish exec fish
