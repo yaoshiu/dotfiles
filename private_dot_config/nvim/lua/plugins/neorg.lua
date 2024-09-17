@@ -14,7 +14,7 @@ return {
 		},
 	},
 	keys = {
-		{ "<leader>uc", "<cmd>Neorg toggle-concealer<cr>", desc = "Toggle Concealer" },
+		{ "<leader>nc", "<cmd>Neorg toggle-concealer<cr>", desc = "Toggle Concealer" },
 	},
 	opts = {
 		load = {
