@@ -13,6 +13,9 @@ return {
 			end,
 		},
 	},
+	keys = {
+		{ "n", "<leader>uc", ":Neorg toggle-concealer" },
+	},
 	opts = {
 		load = {
 			["core.defaults"] = {},
