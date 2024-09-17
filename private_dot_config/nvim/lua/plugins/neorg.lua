@@ -4,12 +4,30 @@ return {
 	cmd = "Neorg",
 	ft = "norg",
 	config = true,
-	opts = {
-		["core.defaults"] = {},
-		["core.concealer"] = {},
-		["core.dirman"] = {
-			default_workspace = "~/neorg",
+	dependencies = {
+		{
+			"nvim-cmp",
+			opts = function(_, opts)
+				local cmp = require("cmp")
+				opts.sources = cmp.config.sources({ { name = "neorg" } })
+				return opts
+			end,
 		},
-		["core.summary"] = {},
+	},
+	opts = {
+		load = {
+			["core.defaults"] = {},
+			["core.concealer"] = {},
+			["core.completion"] = {
+				config = {
+					engine = "nvim-cmp",
+				},
+			},
+			["core.integrations.nvim-cmp"] = {},
+			["core.dirman"] = {
+				default_workspace = "~/neorg",
+			},
+			["core.summary"] = {},
+		},
 	},
 }
