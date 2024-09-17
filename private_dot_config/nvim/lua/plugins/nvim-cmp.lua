@@ -10,6 +10,8 @@ return {
 
 		local cmp = require("cmp")
 
+		opts.preselect = cmp.PreselectMode.None
+
 		opts.mapping = vim.tbl_extend("force", opts.mapping, {
 			["<Tab>"] = cmp.mapping(function(fallback)
 				if cmp.visible() then
