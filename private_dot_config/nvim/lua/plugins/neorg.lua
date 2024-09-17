@@ -8,8 +8,7 @@ return {
 		{
 			"nvim-cmp",
 			opts = function(_, opts)
-				local cmp = require("cmp")
-				opts.sources = cmp.config.sources({ { name = "neorg" } })
+				table.insert(opts.sources, { name = "neorg" })
 				return opts
 			end,
 		},
