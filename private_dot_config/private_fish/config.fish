@@ -5,6 +5,8 @@ if status is-interactive
 
     set -U fish_greeting
     set fish_cursor_insert line
+
+    direnv hook fish | source
 end
 
 # bun
