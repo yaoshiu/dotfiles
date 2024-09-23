@@ -3,8 +3,6 @@ if status is-interactive
     starship init fish | source
     zoxide init fish | source
 
-    source /usr/share/fzf/key-bindings.fish
-
     set -U fish_greeting
     set fish_cursor_insert line
 end
