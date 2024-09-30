@@ -1,7 +1,9 @@
+{{if eq .chezmoi.os "linux" -}}
+#!/bin/sh
 install_arch() {
   echo "Detected Arch based system"
   sudo pacman -Syu --noconfirm
-  sudo pacman -S --noconfirm curl git vim
+  sudo pacman -S --noconfirm neovim starship nodejs zoxide fish bat ripgrep fzf direnv
 }
 
 detect_distro_and_install() {
@@ -29,3 +31,4 @@ detect_distro_and_install() {
 }
 
 detect_distro_and_install
+{{end -}}
