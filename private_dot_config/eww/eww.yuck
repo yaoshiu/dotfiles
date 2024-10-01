@@ -1,0 +1,52 @@
+(defwindow bar
+           :class ""
+           :monitor 0
+           :geometry (geometry :x "0%"
+                               :y "10px"
+                               :width "98%"
+                               :height "30px"
+                               :anchor "top center")
+           :stacking "fg"
+           :exclusive true
+  (box :class "bar"
+    (left)
+    (middle)
+    (right)))
+
+(defwidget left []
+  (box (workspaces-widget)))
+
+(defwidget middle []
+  (box))
+
+(defwidget right []
+  (box :space-evenly false
+       :spacing 10
+       :halign "end"
+    (systray :icon-size 16
+             :spacing 10)
+    (battery)
+    (time)))
+
+(defwidget time [] {formattime(EWW_TIME, "%H:%M")})
+
+(deflisten workspaces `sh ./scripts/workspaces`)
+
+(defwidget workspaces-widget []
+  (box :space-evenly false
+       :spacing 10
+    (for workspace in {workspaces.workspaces}
+      (workspace-button :workspace workspace))))
+
+(defwidget workspace-button [workspace]
+  (button :onclick `niri msg action focus-workspace ${workspace}`
+          :class "workspace-button"
+    {workspace == workspaces.activated ? "●" : "○"}))
+
+(defwidget battery []
+  (circular-progress :value {EWW_BATTERY?.BAT0.capacity}
+                     :style "color: ${EWW_BATTERY?.BAT0.capacity > 50 ? "#1e66f5"
+                             : EWW_BATTERY?.BAT0.capacity > 20 ? "#fe640b"
+                             : "#e64553"}"
+                     :width 16
+                     :thickness 3))

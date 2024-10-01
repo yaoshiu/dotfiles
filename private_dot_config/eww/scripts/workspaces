@@ -1,0 +1,22 @@
+#!/bin/sh
+
+workspaces='{"workspaces": [], "activated": null}'
+
+niri msg -j event-stream | while read -r line; do
+  event_type=$(echo "$line" | jq -r 'keys[0]')
+
+  if [ "$event_type" = "WorkspacesChanged" ]; then
+    workspaces=$(echo "$line" | jq -c '{
+          workspaces: (.WorkspacesChanged.workspaces | sort_by(.idx) | map(.idx)),
+          activated: (.WorkspacesChanged.workspaces[] | select(.is_active == true).idx)
+        }')
+
+    echo "$workspaces"
+
+  elif [ "$event_type" = "WorkspaceActivated" ]; then
+    activated_id=$(echo "$line" | jq '.WorkspaceActivated.id')
+    workspaces=$(echo "$workspaces" | jq -c --argjson activated "$activated_id" '.activated = $activated')
+
+    echo "$workspaces"
+  fi
+done
