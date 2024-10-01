@@ -52,6 +52,8 @@ layout {
     }
 }
 
+prefer-no-csd
+
 spawn-at-startup "/usr/lib/polkit-kde-authentication-agent-1"
 spawn-at-startup "fcitx5"
 
