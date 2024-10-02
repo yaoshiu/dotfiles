@@ -45,7 +45,8 @@
 
 (defwidget battery []
   (circular-progress :value {EWW_BATTERY?.BAT0.capacity}
-                     :style "color: ${EWW_BATTERY?.BAT0.capacity > 50 ? "#1e66f5"
+                     :style "color: ${EWW_BATTERY?.BAT0.status == "Charging" ? "#40a02b"
+                             : EWW_BATTERY?.BAT0.capacity > 50 ? "#1e66f5"
                              : EWW_BATTERY?.BAT0.capacity > 20 ? "#fe640b"
                              : "#e64553"}"
                      :width 16
