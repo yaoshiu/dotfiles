@@ -7,8 +7,8 @@ niri msg -j event-stream | while read -r line; do
 
   if [ "$event_type" = "WorkspacesChanged" ]; then
     workspaces=$(echo "$line" | jq -c '{
-          workspaces: (.WorkspacesChanged.workspaces | sort_by(.idx) | map(.idx)),
-          activated: (.WorkspacesChanged.workspaces[] | select(.is_active == true).idx)
+          workspaces: (.WorkspacesChanged.workspaces | sort_by(.idx) | map(.id)),
+          activated: (.WorkspacesChanged.workspaces[] | select(.is_active == true).id)
         }')
 
     echo "$workspaces"
