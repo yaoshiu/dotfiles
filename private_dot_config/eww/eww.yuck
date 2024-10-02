@@ -41,7 +41,8 @@
 (defwidget workspace-button [workspace]
   (button :onclick `niri msg action focus-workspace ${workspace}`
           :class "workspace-button"
-    {workspace == workspaces.activated ? "●" : "○"}))
+    (label :justify "center"
+           :text {workspace == workspaces.activated ? "●" : "○"})))
 
 (defwidget battery []
   (circular-progress :value {EWW_BATTERY?.BAT0.capacity}
