@@ -43,7 +43,7 @@ return {
       end, { "i", "s" }),
       ["<CR>"] = cmp.mapping(function(fallback)
         if cmp.visible() then
-          if cmp.get_selected_index() then
+          if cmp.get_selected_entry() then
             cmp.confirm({ select = false })
           else
             cmp.close()
