@@ -57,6 +57,6 @@
 
 (defwidget volume []
   (circular-progress :value {volume-listen.volume}
-                     :style ${volume-listen.muted ? "color: #e64553" : ""}
+                     :style {volume-listen.muted ? "color: #e64553" : ""}
                      :width 16
                      :thickness 3))
