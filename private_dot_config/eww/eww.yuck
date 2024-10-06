@@ -26,6 +26,7 @@
     (systray :icon-size 16
              :spacing 10)
     (volume)
+    (brightness)
     (battery)
     (time)))
 
