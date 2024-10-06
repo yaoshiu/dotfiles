@@ -77,8 +77,8 @@ binds {
     XF86AudioLowerVolume allow-when-locked=true { spawn "wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.05-"; }
     XF86AudioMute        allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
     XF86AudioMicMute     allow-when-locked=true { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
-    XF86MonBrightnessUp  allow-when-locked=true { spawn "brightness" "set" "5%+"; }
-    XF86MonBrightnessDown allow-when-locked=true { spawn "brightness" "set" "5%-"; }
+    XF86MonBrightnessUp  allow-when-locked=true { spawn "~/bin/brightness" "set" "5%+"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "~/bin/brightness" "set" "5%-"; }
 
     Mod+Q { close-window; }
 
@@ -203,5 +203,4 @@ environment {
     GTK_IM_MODULE "fcitx"
     QT_IM_MODULE "fcitx"
     XMODIFIERS "@im=fcitx"
-    PATH "$PATH:$HOME/bin"
 }
