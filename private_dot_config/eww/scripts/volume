@@ -27,7 +27,7 @@ getvolume() {
 
 getvolume
 
-# Use pactl to subscribe to changes in PulseAudio/ PipeWire
+# Use pactl to subscribe to changes in PulseAudio
 pactl subscribe | while read -r event; do
   # Check if the event is related to sink (output device) changes
   if echo "$event" | grep -q "Event 'change' on sink"; then
