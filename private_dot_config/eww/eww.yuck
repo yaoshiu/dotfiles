@@ -60,3 +60,10 @@
                      :style {volume-listen.muted ? "color: #e64553" : ""}
                      :width 16
                      :thickness 3))
+
+(deflisten brightness-listen `sh ./scripts/brightness`)
+
+(defwidget brightness []
+  (circular-progress :value {brightness-listen.brightness}
+                     :width 16
+                     :thickness 3))
