@@ -14,7 +14,7 @@
     (right)))
 
 (defwidget left []
-  (box (workspaces-widget)))
+  (box (workspaces)))
 
 (defwidget middle []
   (box))
@@ -25,23 +25,24 @@
        :halign "end"
     (systray :icon-size 16
              :spacing 10)
+    (volume)
     (battery)
     (time)))
 
 (defwidget time [] {formattime(EWW_TIME, "%H:%M")})
 
-(deflisten workspaces `sh ./scripts/workspaces`)
+(deflisten workspaces-listen `sh ./scripts/workspaces`)
 
-(defwidget workspaces-widget []
+(defwidget workspaces []
   (box :space-evenly false
        :spacing 10
-    (for workspace in {workspaces.workspaces}
+    (for workspace in {workspaces-listen.workspaces}
       (workspace-button :workspace workspace))))
 
 (defwidget workspace-button [workspace]
   (button :onclick `niri msg action focus-workspace ${workspace}`
           :class "workspace-button"
-    {workspace == workspaces.activated ? "●" : "○"}))
+    {workspace == workspaces-listen.activated ? "●" : "○"}))
 
 (defwidget battery []
   (circular-progress :value {EWW_BATTERY?.BAT0.capacity}
@@ -49,5 +50,12 @@
                              : EWW_BATTERY?.BAT0.capacity > 50 ? "#1e66f5"
                              : EWW_BATTERY?.BAT0.capacity > 20 ? "#fe640b"
                              : "#e64553"}"
+                     :width 16
+                     :thickness 3))
+
+(deflisten volume-listen `sh ./scripts/volume`)
+
+(defwidget volume []
+  (circular-progress :value {volume-listen}
                      :width 16
                      :thickness 3))

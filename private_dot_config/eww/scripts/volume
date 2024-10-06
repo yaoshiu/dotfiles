@@ -1,0 +1,19 @@
+#!/bin/sh
+
+# Get the current sink volume using pactl
+getvolume() {
+  pactl list sinks | grep '^[[:space:]]Volume:' | head -n 1 |
+    awk '{print $5}' | sed 's/%//g' | while read -r volume; do
+    echo "$volume"
+  done
+}
+
+getvolume
+
+# Use pactl to subscribe to changes in PulseAudio/ PipeWire
+pactl subscribe | while read -r event; do
+  # Check if the event is related to sink (output device) changes
+  if echo "$event" | grep -q "Event 'change' on sink"; then
+    getvolume
+  fi
+done
