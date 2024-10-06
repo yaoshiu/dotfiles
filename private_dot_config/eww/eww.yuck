@@ -62,9 +62,9 @@
                      :width 16
                      :thickness 3))
 
-(deflisten brightness-listen `sh ./scripts/brightness`)
+(deflisten brightness-listen `sh ./scripts/brightness monitor`)
 
 (defwidget brightness []
-  (circular-progress :value {brightness-listen.brightness}
+  (circular-progress :value {brightness-listen}
                      :width 16
                      :thickness 3))
