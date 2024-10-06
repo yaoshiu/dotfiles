@@ -19,7 +19,10 @@ getvolume() {
   fi
 
   # Output the JSON using jq to format it
-  echo "{\"muted\":$MUTED,\"volume\":$VOLUME}" | jq .
+  echo "{
+    \"muted\": $MUTED,
+    \"volume\": $VOLUME
+  }" | jq -c .
 }
 
 getvolume
