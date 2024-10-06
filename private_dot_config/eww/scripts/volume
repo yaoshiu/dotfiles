@@ -2,10 +2,24 @@
 
 # Get the current sink volume using pactl
 getvolume() {
-  pactl list sinks | grep '^[[:space:]]Volume:' | head -n 1 |
-    awk '{print $5}' | sed 's/%//g' | while read -r volume; do
-    echo "$volume"
-  done
+  # Get the current sink information using pactl
+  SINK_INFO=$(pactl list sinks)
+
+  # Extract the volume and remove the '%' symbol
+  VOLUME=$(echo "$SINK_INFO" | grep '^[[:space:]]Volume:' | head -n 1 | awk '{print $5}' | sed 's/%//g')
+
+  # Extract the mute status
+  MUTE_STATUS=$(echo "$SINK_INFO" | grep '^[[:space:]]Mute:' | awk '{print $2}')
+
+  # Convert MUTE_STATUS to a boolean value
+  if [ "$MUTE_STATUS" = "yes" ]; then
+    MUTED=true
+  else
+    MUTED=false
+  fi
+
+  # Output the JSON using jq to format it
+  echo "{\"muted\":$MUTED,\"volume\":$VOLUME}" | jq .
 }
 
 getvolume
