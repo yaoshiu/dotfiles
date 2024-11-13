@@ -66,6 +66,7 @@
   "render-markdown.nvim": { "branch": "main", "commit": "d69a885e1bf21cb329d2eafe56fd80b6de627216" },
   "rustaceanvim": { "branch": "master", "commit": "35d1dbcf8b5d828a17601dfc4d5e76fcc34d4048" },
   "snacks.nvim": { "branch": "main", "commit": "bc0cf370915ac4e8d5b1bd8188b5091a4a0ee22c" },
+  "tailwindcss-colorizer-cmp.nvim": { "branch": "main", "commit": "3d3cd95e4a4135c250faf83dd5ed61b8e5502b86" },
   "telescope-fzf-native.nvim": { "branch": "main", "commit": "cf48d4dfce44e0b9a2e19a008d6ec6ea6f01a83b" },
   "telescope.nvim": { "branch": "master", "commit": "85922dde3767e01d42a08e750a773effbffaea3e" },
   "todo-comments.nvim": { "branch": "main", "commit": "ae0a2afb47cf7395dc400e5dc4e05274bf4fb9e0" },
