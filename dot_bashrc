@@ -16,3 +16,4 @@ fi
 
 # Put your fun stuff here.
 [ -x /bin/fish ] && SHELL=/bin/fish exec fish
+. "/home/yaoshiu/.deno/env"
